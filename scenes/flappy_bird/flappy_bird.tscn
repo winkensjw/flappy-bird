@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://cmura27my5ns8"]
+
+[ext_resource type="Script" path="res://scripts/flappy_bird/flappy_bird.gd" id="1_av8i6"]
+[ext_resource type="Texture2D" uid="uid://c3y6dvo0xou17" path="res://resources/yellowbird-midflap.png" id="1_h4lkr"]
+[ext_resource type="Texture2D" uid="uid://ru2pxvrsrrre" path="res://resources/yellowbird-downflap.png" id="2_oc1gm"]
+[ext_resource type="Texture2D" uid="uid://bbw6pgm62vw68" path="res://resources/yellowbird-upflap.png" id="3_faw53"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8y3ex"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_h4lkr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_oc1gm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_h4lkr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_faw53")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qrrva"]
+radius = 11.0
+
+[node name="FlappyBird" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_av8i6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_8y3ex")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_qrrva")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(53, 0)
+limit_top = 0
+limit_bottom = 0
+limit_smoothed = true
