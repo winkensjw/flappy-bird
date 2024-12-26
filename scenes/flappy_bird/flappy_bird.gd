@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-const JUMP_VELOCITY = -200.0
+const JUMP_VELOCITY = -250.0
 const SPEED = 100.0
 const ROTATION_SPEED = 20.0
 const MAX_ROTATION_UP: float = -0.3 
@@ -19,7 +19,5 @@ func _physics_process(delta: float) -> void:
 	
 	
 func rotate_bird(delta: float) -> void:
-	if velocity.y < 0:
-		rotation = lerp(rotation, MAX_ROTATION_UP, ROTATION_SPEED * delta)
-	else:
-		rotation = lerp(rotation, MAX_ROTATION_DOWN, ROTATION_SPEED * delta)
+	var roation_direction = MAX_ROTATION_UP if velocity.y < 0 else MAX_ROTATION_DOWN
+	rotation = lerp(rotation, roation_direction, ROTATION_SPEED * delta)

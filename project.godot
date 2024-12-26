@@ -29,6 +29,12 @@ flap={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Bird"
+2d_physics/layer_2="Pipes"
+2d_physics/layer_3="DeathPlane"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
