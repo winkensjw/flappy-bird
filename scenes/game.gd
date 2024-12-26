@@ -24,10 +24,12 @@ func _on_pipe_timer_timeout() -> void:
 	
 func spawn_pipe() -> void:
 	var pipes_instance = pipes.instantiate()
-	# pipe y position between  75 and 220
+	# pipe y position between 75 and 220
 	pipes_instance.position.x = bird.position.x + 300
 	pipes_instance.position.y = randi() % 146 + 75
 	self.add_child(pipes_instance)
+	# remove pipe after 5 secondes (its off screen by now)
+	# TODO replace this by its own method that considers the game state, i.e. don't remove pipes after the game ended
 	var pipe_kill_timer = Timer.new()
 	pipe_kill_timer.wait_time = 5.0
 	pipe_kill_timer.one_shot = true
