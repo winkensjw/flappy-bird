@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cpdruiq6flwk7"]
+[gd_scene load_steps=6 format=3 uid="uid://cpdruiq6flwk7"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_nb3i7"]
 [ext_resource type="PackedScene" uid="uid://dbx1xajor5cac" path="res://scenes/background/background.tscn" id="2_07pxf"]
 [ext_resource type="PackedScene" uid="uid://cmura27my5ns8" path="res://scenes/flappy_bird/flappy_bird.tscn" id="3_vabb8"]
 [ext_resource type="PackedScene" uid="uid://bf05p6p471bly" path="res://scenes/ceiling/ceiling.tscn" id="4_66naa"]
 [ext_resource type="PackedScene" uid="uid://bfy7pv1ih4jy3" path="res://scenes/ground/ground.tscn" id="5_eklbt"]
-[ext_resource type="PackedScene" uid="uid://co1mbbyfgmyrs" path="res://scenes/pipes/pipes.tscn" id="6_iqwam"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_nb3i7")
@@ -19,5 +18,8 @@ position = Vector2(51, 156)
 
 [node name="Ground" parent="." instance=ExtResource("5_eklbt")]
 
-[node name="Pipes" parent="." instance=ExtResource("6_iqwam")]
-position = Vector2(218, 127)
+[node name="PipeTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="PipeTimer" to="." method="_on_pipe_timer_timeout"]
