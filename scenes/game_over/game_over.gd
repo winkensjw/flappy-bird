@@ -24,3 +24,7 @@ func remove_all_children() -> void:
 		scoreBox.remove_child(child)
 	for child in bestBox.get_children():
 		bestBox.remove_child(child)
+
+
+func _on_button_pressed() -> void:
+	Events.emit_signal("game_end")

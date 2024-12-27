@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cgxs4vm65amjy"]
+[gd_scene load_steps=14 format=3 uid="uid://cgxs4vm65amjy"]
 
 [ext_resource type="Script" path="res://scenes/game_over/game_over.gd" id="1_qrnn8"]
 [ext_resource type="Texture2D" uid="uid://b37hd055236oe" path="res://resources/gameover.png" id="1_uj3v1"]
@@ -48,7 +48,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("PopupPanel:position")
+tracks/3/path = NodePath("ScoreCard:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -57,10 +57,22 @@ tracks/3/keys = {
 "update": 1,
 "values": [Vector2i(40, 400)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CenterContainer:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_q7wmh"]
 resource_name = "game_over"
-length = 1.5
+length = 2.0
 step = 0.25
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -115,7 +127,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("PopupPanel:position")
+tracks/4/path = NodePath("ScoreCard:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -138,6 +150,18 @@ tracks/5/keys = {
 "method": &"prepare_final_score"
 }]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CenterContainer:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6odn7"]
 _data = {
@@ -153,6 +177,30 @@ border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0.653668, 0.625692, 0.336077, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2nclf"]
+content_margin_bottom = 4.0
+bg_color = Color(0.962882, 0.434498, 0.105625, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ytnkh"]
+content_margin_bottom = 4.0
+bg_color = Color(0.870744, 0.381831, 0.0581892, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0q624"]
+content_margin_bottom = 4.0
+bg_color = Color(0.92549, 0.411765, 0.0823529, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+
 [node name="GameOver" type="Control"]
 layout_mode = 3
 anchors_preset = 0
@@ -166,8 +214,9 @@ autoplay = "game_over"
 
 [node name="GameOverContainer" type="CenterContainer" parent="."]
 layout_mode = 0
+offset_top = 10.0
 offset_right = 250.0
-offset_bottom = 152.0
+offset_bottom = 162.0
 
 [node name="GameOverTexture" type="TextureRect" parent="GameOverContainer"]
 modulate = Color(1, 1, 1, 0)
@@ -182,31 +231,35 @@ offset_bottom = 349.0
 [node name="GameOverAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_fb48t")
 
-[node name="PopupPanel" type="PopupPanel" parent="."]
-position = Vector2i(40, 400)
-size = Vector2i(169, 103)
-visible = true
+[node name="ScoreCard" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 150.0
+offset_right = 209.0
+offset_bottom = 253.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_kkjqp")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PopupPanel"]
-anchors_preset = 14
+[node name="HBoxContainer" type="HBoxContainer" parent="ScoreCard"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
 anchor_top = 0.5
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 2.0
-offset_top = -49.5
-offset_right = -2.0
-offset_bottom = 49.5
+offset_left = -74.0
+offset_top = -33.0
+offset_right = 74.0
+offset_bottom = 33.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 32
 alignment = 1
 
-[node name="ScoreVBox" type="VBoxContainer" parent="PopupPanel/HBoxContainer"]
+[node name="ScoreVBox" type="VBoxContainer" parent="ScoreCard/HBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="ScoreLabel" type="Label" parent="PopupPanel/HBoxContainer/ScoreVBox"]
+[node name="ScoreLabel" type="Label" parent="ScoreCard/HBoxContainer/ScoreVBox"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.815686, 0.662745, 0.329412, 1)
 theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
@@ -214,24 +267,24 @@ theme_override_fonts/font = ExtResource("3_ndtwc")
 theme_override_font_sizes/font_size = 32
 text = "Score"
 
-[node name="ScoreHBox" type="HBoxContainer" parent="PopupPanel/HBoxContainer/ScoreVBox"]
+[node name="ScoreHBox" type="HBoxContainer" parent="ScoreCard/HBoxContainer/ScoreVBox"]
 unique_name_in_owner = true
 layout_mode = 2
 alignment = 1
 
-[node name="TextureRect2" type="TextureRect" parent="PopupPanel/HBoxContainer/ScoreVBox/ScoreHBox"]
+[node name="TextureRect2" type="TextureRect" parent="ScoreCard/HBoxContainer/ScoreVBox/ScoreHBox"]
 layout_mode = 2
 texture = ExtResource("3_bex7n")
 
-[node name="TextureRect" type="TextureRect" parent="PopupPanel/HBoxContainer/ScoreVBox/ScoreHBox"]
+[node name="TextureRect" type="TextureRect" parent="ScoreCard/HBoxContainer/ScoreVBox/ScoreHBox"]
 layout_mode = 2
 texture = ExtResource("4_cf6mo")
 
-[node name="BestVBox" type="VBoxContainer" parent="PopupPanel/HBoxContainer"]
+[node name="BestVBox" type="VBoxContainer" parent="ScoreCard/HBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="BestLabel" type="Label" parent="PopupPanel/HBoxContainer/BestVBox"]
+[node name="BestLabel" type="Label" parent="ScoreCard/HBoxContainer/BestVBox"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.815686, 0.662745, 0.329412, 1)
 theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
@@ -239,15 +292,35 @@ theme_override_fonts/font = ExtResource("3_ndtwc")
 theme_override_font_sizes/font_size = 32
 text = "Best"
 
-[node name="BestHBox" type="HBoxContainer" parent="PopupPanel/HBoxContainer/BestVBox"]
+[node name="BestHBox" type="HBoxContainer" parent="ScoreCard/HBoxContainer/BestVBox"]
 unique_name_in_owner = true
 layout_mode = 2
 alignment = 1
 
-[node name="TextureRect2" type="TextureRect" parent="PopupPanel/HBoxContainer/BestVBox/BestHBox"]
+[node name="TextureRect2" type="TextureRect" parent="ScoreCard/HBoxContainer/BestVBox/BestHBox"]
 layout_mode = 2
 texture = ExtResource("3_bex7n")
 
-[node name="TextureRect" type="TextureRect" parent="PopupPanel/HBoxContainer/BestVBox/BestHBox"]
+[node name="TextureRect" type="TextureRect" parent="ScoreCard/HBoxContainer/BestVBox/BestHBox"]
 layout_mode = 2
 texture = ExtResource("4_cf6mo")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 77.0
+offset_top = 272.0
+offset_right = 177.0
+offset_bottom = 312.0
+
+[node name="Button" type="Button" parent="CenterContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_ndtwc")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/hover = SubResource("StyleBoxFlat_2nclf")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ytnkh")
+theme_override_styles/normal = SubResource("StyleBoxFlat_0q624")
+text = "OK"
+
+[connection signal="pressed" from="CenterContainer/Button" to="." method="_on_button_pressed"]

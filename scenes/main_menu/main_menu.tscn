@@ -19,15 +19,17 @@ scale = Vector2(0.868995, 0.68)
 texture = ExtResource("2_y48dv")
 
 [node name="Message" type="TextureRect" parent="CanvasLayer"]
-offset_right = 184.0
-offset_bottom = 267.0
-scale = Vector2(1.35776, 1.30372)
+offset_left = 15.0
+offset_top = 23.0
+offset_right = 199.0
+offset_bottom = 290.0
+scale = Vector2(1.2, 1.152)
 texture = ExtResource("3_7o8v5")
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(124.5, 318.5)
+position = Vector2(125, 304)
 shape = SubResource("RectangleShape2D_dci0c")
 
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
