@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+@onready var animation = $AnimatedSprite2D
 
 const JUMP_VELOCITY = -250.0
 const SPEED = 100.0
@@ -7,7 +8,13 @@ const ROTATION_SPEED = 20.0
 const MAX_ROTATION_UP: float = -0.3 
 const MAX_ROTATION_DOWN: float = 0.5
 
+func _process(_delta: float) -> void:
+	if not Globals.running:
+		animation.stop()
+
 func _physics_process(delta: float) -> void:
+	if not Globals.running:
+		return
 	velocity += get_gravity() * delta
 	velocity.x = SPEED
 	# Handle jump.
