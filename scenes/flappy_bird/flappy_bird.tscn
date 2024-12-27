@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://cmura27my5ns8"]
+[gd_scene load_steps=9 format=3 uid="uid://cmura27my5ns8"]
 
 [ext_resource type="Script" path="res://scenes/flappy_bird/flappy_bird.gd" id="1_av8i6"]
 [ext_resource type="Texture2D" uid="uid://c3y6dvo0xou17" path="res://resources/yellowbird-midflap.png" id="1_h4lkr"]
 [ext_resource type="Texture2D" uid="uid://ru2pxvrsrrre" path="res://resources/yellowbird-downflap.png" id="2_oc1gm"]
 [ext_resource type="Texture2D" uid="uid://bbw6pgm62vw68" path="res://resources/yellowbird-upflap.png" id="3_faw53"]
+[ext_resource type="AudioStream" uid="uid://d0yblfua3b6g" path="res://resources/wing.wav" id="5_8wg2h"]
+[ext_resource type="AudioStream" uid="uid://mr7qakobhk1v" path="res://resources/hit.wav" id="6_3l0oy"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8y3ex"]
 animations = [{
@@ -45,3 +47,9 @@ position = Vector2(53, 0)
 limit_top = 0
 limit_bottom = 0
 limit_smoothed = true
+
+[node name="WingAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_8wg2h")
+
+[node name="HitAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_3l0oy")

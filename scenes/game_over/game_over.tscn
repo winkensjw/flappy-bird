@@ -1,46 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://cgxs4vm65amjy"]
+[gd_scene load_steps=11 format=3 uid="uid://cgxs4vm65amjy"]
 
+[ext_resource type="Script" path="res://scenes/game_over/game_over.gd" id="1_qrnn8"]
 [ext_resource type="Texture2D" uid="uid://b37hd055236oe" path="res://resources/gameover.png" id="1_uj3v1"]
-
-[sub_resource type="Animation" id="Animation_q7wmh"]
-resource_name = "game_over"
-length = 1.25
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CenterContainer/TextureRect:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.5, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CenterContainer:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.5, 0.75, 1, 1.25),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, -10), Vector2(0, 20), Vector2(0, 10)]
-}
+[ext_resource type="AudioStream" uid="uid://dm5wqr2ivcwbi" path="res://resources/die.wav" id="2_fb48t"]
+[ext_resource type="Texture2D" uid="uid://db5gcuato3jv6" path="res://resources/1.png" id="3_bex7n"]
+[ext_resource type="FontFile" uid="uid://dq8aygt537pgq" path="res://resources/mago3.ttf" id="3_ndtwc"]
+[ext_resource type="Texture2D" uid="uid://d01hxgyn67yhl" path="res://resources/0.png" id="4_cf6mo"]
 
 [sub_resource type="Animation" id="Animation_c4q26"]
 length = 0.001
@@ -59,7 +24,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CenterContainer/TextureRect:modulate")
+tracks/1/path = NodePath("GameOverContainer/GameOverTexture:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -71,7 +36,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("CenterContainer:position")
+tracks/2/path = NodePath("GameOverContainer:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -80,6 +45,99 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(0, 0)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PopupPanel:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(40, 400)]
+}
+
+[sub_resource type="Animation" id="Animation_q7wmh"]
+resource_name = "game_over"
+length = 1.5
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GameOverContainer/GameOverTexture:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GameOverContainer:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5, 0.75, 1, 1.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -10), Vector2(0, 20), Vector2(0, 10)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GameOverAudio")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.466667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PopupPanel:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.25, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2i(40, 400), Vector2i(40, 150)]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"prepare_final_score"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6odn7"]
 _data = {
@@ -87,9 +145,18 @@ _data = {
 "game_over": SubResource("Animation_q7wmh")
 }
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kkjqp"]
+bg_color = Color(0.862745, 0.839216, 0.576471, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.653668, 0.625692, 0.336077, 1)
+
 [node name="GameOver" type="Control"]
 layout_mode = 3
 anchors_preset = 0
+script = ExtResource("1_qrnn8")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -97,12 +164,12 @@ libraries = {
 }
 autoplay = "game_over"
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="GameOverContainer" type="CenterContainer" parent="."]
 layout_mode = 0
 offset_right = 250.0
 offset_bottom = 152.0
 
-[node name="TextureRect" type="TextureRect" parent="CenterContainer"]
+[node name="GameOverTexture" type="TextureRect" parent="GameOverContainer"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 texture = ExtResource("1_uj3v1")
@@ -111,3 +178,76 @@ texture = ExtResource("1_uj3v1")
 layout_mode = 0
 offset_right = 250.0
 offset_bottom = 349.0
+
+[node name="GameOverAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_fb48t")
+
+[node name="PopupPanel" type="PopupPanel" parent="."]
+position = Vector2i(40, 400)
+size = Vector2i(169, 103)
+visible = true
+theme_override_styles/panel = SubResource("StyleBoxFlat_kkjqp")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PopupPanel"]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 2.0
+offset_top = -49.5
+offset_right = -2.0
+offset_bottom = 49.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="ScoreVBox" type="VBoxContainer" parent="PopupPanel/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="ScoreLabel" type="Label" parent="PopupPanel/HBoxContainer/ScoreVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.815686, 0.662745, 0.329412, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_ndtwc")
+theme_override_font_sizes/font_size = 32
+text = "Score"
+
+[node name="ScoreHBox" type="HBoxContainer" parent="PopupPanel/HBoxContainer/ScoreVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="PopupPanel/HBoxContainer/ScoreVBox/ScoreHBox"]
+layout_mode = 2
+texture = ExtResource("3_bex7n")
+
+[node name="TextureRect" type="TextureRect" parent="PopupPanel/HBoxContainer/ScoreVBox/ScoreHBox"]
+layout_mode = 2
+texture = ExtResource("4_cf6mo")
+
+[node name="BestVBox" type="VBoxContainer" parent="PopupPanel/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="BestLabel" type="Label" parent="PopupPanel/HBoxContainer/BestVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.815686, 0.662745, 0.329412, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_ndtwc")
+theme_override_font_sizes/font_size = 32
+text = "Best"
+
+[node name="BestHBox" type="HBoxContainer" parent="PopupPanel/HBoxContainer/BestVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="PopupPanel/HBoxContainer/BestVBox/BestHBox"]
+layout_mode = 2
+texture = ExtResource("3_bex7n")
+
+[node name="TextureRect" type="TextureRect" parent="PopupPanel/HBoxContainer/BestVBox/BestHBox"]
+layout_mode = 2
+texture = ExtResource("4_cf6mo")

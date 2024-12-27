@@ -12,14 +12,15 @@ const game_over = preload("res://scenes/game_over/game_over.tscn")
 func _ready() -> void:
 	Events.connect("player_died", Callable(self, "on_player_died"))
 	Globals.running = true
+	Globals.score = 0
 	spawn_pipe()
 	
 	
 func on_player_died() -> void:
 	Globals.running = false
 	counter.queue_free()
-	var game_over = game_over.instantiate()
-	ui_layer.add_child(game_over)
+	var game_over_instance = game_over.instantiate()
+	ui_layer.add_child(game_over_instance)
 
 
 func _on_pipe_timer_timeout() -> void:

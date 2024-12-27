@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cet4nml121jx"]
+[gd_scene load_steps=3 format=3 uid="uid://cet4nml121jx"]
 
 [ext_resource type="Script" path="res://scenes/counter/counter.gd" id="1_vi44i"]
+[ext_resource type="AudioStream" uid="uid://dq83p6nvtbs2m" path="res://resources/point.wav" id="2_58gkg"]
 
 [node name="Counter" type="Control"]
 layout_mode = 3
@@ -14,3 +15,6 @@ offset_bottom = 62.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer"]
 layout_mode = 2
+
+[node name="PointAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_58gkg")
