@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cet4nml121jx"]
 
-[ext_resource type="Script" path="res://scenes/counter/counter.gd" id="1_vi44i"]
+[ext_resource type="Script" uid="uid://c0nlaeq2psnif" path="res://scenes/counter/counter.gd" id="1_vi44i"]
 [ext_resource type="AudioStream" uid="uid://dq83p6nvtbs2m" path="res://resources/point.wav" id="2_58gkg"]
 
 [node name="Counter" type="Control"]

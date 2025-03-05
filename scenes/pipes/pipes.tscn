@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://co1mbbyfgmyrs"]
 
 [ext_resource type="Texture2D" uid="uid://8jj7qytqquao" path="res://resources/pipe-green.png" id="1_cg60k"]
-[ext_resource type="Script" path="res://scenes/pipes/pipes.gd" id="1_n84oj"]
+[ext_resource type="Script" uid="uid://yrhkhx727d4q" path="res://scenes/pipes/pipes.gd" id="1_n84oj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d2kak"]
 size = Vector2(47, 321)

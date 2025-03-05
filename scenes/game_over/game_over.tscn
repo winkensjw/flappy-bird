@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://cgxs4vm65amjy"]
 
-[ext_resource type="Script" path="res://scenes/game_over/game_over.gd" id="1_qrnn8"]
+[ext_resource type="Script" uid="uid://k0gjbia6fr7s" path="res://scenes/game_over/game_over.gd" id="1_qrnn8"]
 [ext_resource type="Texture2D" uid="uid://b37hd055236oe" path="res://resources/gameover.png" id="1_uj3v1"]
 [ext_resource type="AudioStream" uid="uid://dm5wqr2ivcwbi" path="res://resources/die.wav" id="2_fb48t"]
 [ext_resource type="Texture2D" uid="uid://db5gcuato3jv6" path="res://resources/1.png" id="3_bex7n"]
@@ -165,8 +165,8 @@ tracks/6/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6odn7"]
 _data = {
-"RESET": SubResource("Animation_c4q26"),
-"game_over": SubResource("Animation_q7wmh")
+&"RESET": SubResource("Animation_c4q26"),
+&"game_over": SubResource("Animation_q7wmh")
 }
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kkjqp"]
@@ -208,7 +208,7 @@ script = ExtResource("1_qrnn8")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_6odn7")
+&"": SubResource("AnimationLibrary_6odn7")
 }
 autoplay = "game_over"
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bf05p6p471bly"]
 
-[ext_resource type="Script" path="res://scenes/ceiling/ceiling.gd" id="1_4m4ir"]
+[ext_resource type="Script" uid="uid://dmbastlqnwulh" path="res://scenes/ceiling/ceiling.gd" id="1_4m4ir"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_h3nao"]
 distance = -1.0

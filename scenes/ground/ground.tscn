@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bfy7pv1ih4jy3"]
 
-[ext_resource type="Script" path="res://scenes/ground/ground.gd" id="1_a1u0n"]
+[ext_resource type="Script" uid="uid://pajcpt4lprg7" path="res://scenes/ground/ground.gd" id="1_a1u0n"]
 [ext_resource type="Texture2D" uid="uid://dlosa846ef6ax" path="res://resources/base.png" id="2_y1f4o"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_qkfox"]
